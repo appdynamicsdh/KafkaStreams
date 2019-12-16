@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output url="file://$MODULE_DIR$/target/classes" />
+    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: com.appdynamics.agent:agent-api:4.5.13.27526" level="project" />
+    <orderEntry type="library" name="Maven: com.appdynamics:javaagent:4.5.11" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing.contrib:opentracing-rxjava-1:0.1.1" level="project" />
+    <orderEntry type="library" name="Maven: io.reactivex:rxjava:1.3.8" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing:opentracing-util:0.33.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing:opentracing-api:0.33.0" level="project" />
+    <orderEntry type="library" name="Maven: io.opentracing:opentracing-noop:0.33.0" level="project" />
+    <orderEntry type="library" name="Maven: com.appdynamics:appagent:4.5.11" level="project" />
+    <orderEntry type="library" name="Maven: com.appdynamics:appagent-boot:4.5.11" level="project" />
+    <orderEntry type="library" name="Maven: com.appdynamics:common-utils:4.5.11" level="project" />
+    <orderEntry type="library" name="Maven: com.appdynamics:singularity-log4j:4.5.11" level="project" />
+    <orderEntry type="library" name="Maven: org.junit.jupiter:junit-jupiter-api:5.5.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apiguardian:apiguardian-api:1.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.opentest4j:opentest4j:1.2.0" level="project" />
+    <orderEntry type="library" name="Maven: org.junit.platform:junit-platform-commons:1.5.1" level="project" />
+  </component>
+</module>

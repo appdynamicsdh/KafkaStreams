@@ -1,0 +1,6 @@
+com.appdynamics.instrumentation.sdk
+com.appdynamics.instrumentation.sdk.contexts
+com.appdynamics.instrumentation.sdk.logging
+com.appdynamics.instrumentation.sdk.template
+com.appdynamics.instrumentation.sdk.template.async
+com.appdynamics.instrumentation.sdk.toolbox.reflection

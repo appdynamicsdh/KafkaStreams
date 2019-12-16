@@ -1,0 +1,128 @@
+<activities>
+    <producer>
+        <instrumentation>
+            <class-name>com.appdynamics.selab.tcpclient.TCPClient</class-name>
+            <method-name>sendRequest</method-name>
+            <match-type>MATCHES_CLASS</match-type>
+        </instrumentation>
+        <identifiers>
+            <identifier name="MyName">
+                <data-gatherer-type>INVOKED</data-gatherer-type>
+                <getter-chain>this</getter-chain>
+                <user-defined-name>TCPServer</user-defined-name>
+                <transformer-type>USER_DEFINED_NAME</transformer-type>
+            </identifier>
+        </identifiers>
+        <correlation>
+            <instrumentation>
+                <class-name>com.appdynamics.selab.tcpclient.TCPClient</class-name>
+                <method-name>objectToBytes</method-name>
+                <match-type>MATCHES_CLASS</match-type>
+            </instrumentation>
+            <payload-pointer>
+                <data-gatherer-type>POSITION</data-gatherer-type>
+                <position>0</position>
+                <getter-chain>getInnerPayload</getter-chain>
+                <transformer-type>GETTER_METHODS</transformer-type>
+            </payload-pointer>
+            <payload-operation>
+                <access-type>method</access-type>
+                <access-method>put</access-method>
+                <param-types>java.lang.Object,java.lang.Object</param-types>
+            </payload-operation>
+        </correlation>
+    </producer>
+
+    <consumer identify-transaction="true">
+
+        <instrumentation>
+            <class-name>com.appdynamics.selab.tcpserver.TCPServer</class-name>
+            <method-name>processPayload</method-name>
+            <match-type>MATCHES_CLASS</match-type>
+        </instrumentation>
+
+        <correlation>
+
+             <payload-pointer>
+                <data-gatherer-type>POSITION</data-gatherer-type>
+                <position>0</position>
+                <getter-chain>getInnerPayload</getter-chain>
+                <transformer-type>GETTER_METHODS</transformer-type>
+            </payload-pointer>
+
+            <payload-operation>
+                <access-type>method</access-type>
+                <access-method>get</access-method>
+				                <param-types>java.lang.Object</param-types>
+
+            </payload-operation>
+        </correlation>
+    </consumer>
+
+
+    <producer activity-type="SimpleChannelPool" in-process="true">
+        <instrumentation>
+            <class-name>com.appdynamics.selab.util.Pipeline</class-name>
+            <method-name>put</method-name>
+            <match-type>MATCHES_CLASS</match-type>
+        </instrumentation>
+        <correlation>
+            <payload-pointer>
+                <data-gatherer-type>POSITION</data-gatherer-type>
+                <transformer-type>GETTER_METHODS</transformer-type>
+                <position>0</position>
+                <getter-chain>this</getter-chain>
+            </payload-pointer>
+        </correlation>
+    </producer>
+
+    <consumer activity-type="SimpleChannelPool" in-process="true">
+        <instrumentation>
+            <class-name>com.appdynamics.selab.tcpserver.TCPServer$Intermediary</class-name>
+            <method-name>processQueue</method-name>
+            <match-type>MATCHES_CLASS</match-type>
+        </instrumentation>
+        <correlation>
+            <payload-pointer>
+                <data-gatherer-type>POSITION</data-gatherer-type>
+                <transformer-type>GETTER_METHODS</transformer-type>
+                <position>0</position>
+                <getter-chain>this</getter-chain>
+            </payload-pointer>
+        </correlation>
+    </consumer>
+
+    <producer activity-type="SimpleChannelPool" in-process="true">
+        <instrumentation>
+            <class-name>com.appdynamics.selab.util.CustomQueue</class-name>
+            <method-name>enqueue</method-name>
+            <match-type>MATCHES_CLASS</match-type>
+        </instrumentation>
+        <correlation>
+            <payload-pointer>
+                <data-gatherer-type>POSITION</data-gatherer-type>
+                <transformer-type>GETTER_METHODS</transformer-type>
+                <position>0</position>
+                <getter-chain>this</getter-chain>
+            </payload-pointer>
+        </correlation>
+    </producer>
+
+    <consumer activity-type="SimpleChannelPool" in-process="true">
+        <instrumentation>
+            <class-name>com.appdynamics.selab.tcpserver.TCPServer$QueueProcessor</class-name>
+            <method-name>callURL</method-name>
+            <match-type>MATCHES_CLASS</match-type>
+        </instrumentation>
+        <correlation>
+            <payload-pointer>
+                <data-gatherer-type>POSITION</data-gatherer-type>
+                <transformer-type>GETTER_METHODS</transformer-type>
+                <position>0</position>
+                <getter-chain>this</getter-chain>
+            </payload-pointer>
+        </correlation>
+    </consumer>
+
+
+</activities>
